@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../shared/services/auth.service';
-import { Subscription } from 'rxjs';//../../../node_modules/
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MaterialService } from '../shared/classes/material.service';
+import {Component, OnDestroy, OnInit} from '@angular/core'
+import {FormControl, FormGroup, Validators} from '@angular/forms'
+import {AuthService} from '../shared/services/auth.service'
+import {Subscription} from 'rxjs'
+import {ActivatedRoute, Params, Router} from '@angular/router'
+import {MaterialService} from '../shared/classes/material.service'
 
 @Component({
   selector: 'app-login-page',
@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       } else if (params['accessDenied']) {
         MaterialService.toast('Для начала авторизуйтесь в системе')
       } else if (params['sessionFailed']) {
-        MaterialService.toast('Войдите в систему заново!')
+        MaterialService.toast('Пожалуйста войдите в систему заного')
       }
     })
   }
@@ -41,9 +41,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     if (this.aSub) {
       this.aSub.unsubscribe()
     }
-  }  
+  }
 
-  onSubmit(){
+  onSubmit() {
     this.form.disable()
 
     this.aSub = this.auth.login(this.form.value).subscribe(
@@ -54,4 +54,5 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       }
     )
   }
+
 }

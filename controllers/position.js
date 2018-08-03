@@ -9,6 +9,7 @@ module.exports.getByCategoryId = async (req, res) => {
             user: req.user.id
         })
         res.status(200).json(positions)
+        
     } catch (e){
         errorHandler(res, e)
     }
@@ -18,7 +19,7 @@ module.exports.create = async (req, res) => {
     try {
         const position = await new Position({
             name: req.body.name,
-            xost: req.body.cost,
+            cost: req.body.cost,
             category: req.body.category,
             user: req.user.id
         }).save()
